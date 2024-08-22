@@ -19,7 +19,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include "includes/topbar.php"?>
+                <?php include "includes/navbar.php"?>
                 <!-- End of Topbar -->
 
                 
