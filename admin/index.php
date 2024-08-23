@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "includes/header.php" ?>
+<?php include "includes/admin_header.php" ?>
 
 <body id="page-top">
 
@@ -11,7 +11,7 @@
         //  if($connection) echo "conn"
          ?>
         <!-- Sidebar -->
-        <?php include "includes/sidebar.php" ?>
+        <?php include "includes/admin_sidebar.php" ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -21,7 +21,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include "includes/navbar.php" ?>
+                <?php include "includes/admin_navbar.php" ?>
                 <!-- End of Topbar -->
 
 
@@ -39,7 +39,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <?php include "includes/footer.php" ?>
+            <?php include "includes/admin_footer.php" ?>
             <!-- End of Footer -->
 
         </div>

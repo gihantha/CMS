@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "includes/header.php"?>
+<?php include "includes/admin_header.php"?>
 
 <body id="page-top">
 
@@ -9,7 +9,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?php include "includes/sidebar.php" ?>
+        <?php include "includes/admin_sidebar.php" ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -19,7 +19,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include "includes/navbar.php"?>
+                <?php include "includes/admin_navbar.php"?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -41,6 +41,10 @@
                         </form>
                     </div>
                     <div class="col-6 col-xs-6">
+                    <?php 
+                     $query = "SELECT * FROM categories";
+                     $select_all_categories = mysqli_query($connection, $query);
+                    ?> 
                         <table class="table table-bordered table-hover table-secondary">
                             <thead>
                                 <tr>
@@ -49,14 +53,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <?php 
+
+                                while($row = mysqli_fetch_assoc($select_all_categories)){
+                                    $cat_title = $row['cat_title'];
+                                    $cat_id = $row['cat_id'];
+
+                                    echo "<tr>
+                                    <td>$cat_id</td>
+                                    <td>$cat_title</td>
+                                </tr>";
+                                }
+                                ?>
+                                <!-- <tr>
                                     <td>1</td>
                                     <td>Nature</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>Sky</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -66,7 +82,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <?php include "includes/footer.php" ?>
+            <?php include "includes/admin_footer.php" ?>
             <!-- End of Footer -->
 
         </div>
