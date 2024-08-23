@@ -30,7 +30,25 @@
                     </div>
 
                     <div class="col-6 col-xs-6">
-                        <form action="">
+                        <?php 
+                        if(isset($_POST['submit'])){
+                            $cat_title = $_POST['cat_title'];
+
+                            if($cat_title == '' || empty($cat_title)){
+                                echo "This field should not be empty";
+                            } else {
+                                $query = "INSERT INTO categories(cat_title) ";
+                                $query .= "VALUE('{$cat_title}')";
+
+                                $create_category_query = mysqli_query($connection, $query);
+
+                                if(!$create_category_query){
+                                    die('QUERY FAILED' . mysqli_error($connection));
+                                }
+                            }
+                        };
+                        ?>
+                        <form action="" method="post">
                             <div class="form-group">
                                 <label for="cat_title">Category Name</label>
                                 <input type="text" name="cat_title" id="" class="form-control">
@@ -60,19 +78,12 @@
                                     $cat_id = $row['cat_id'];
 
                                     echo "<tr>
-                                    <td>$cat_id</td>
-                                    <td>$cat_title</td>
-                                </tr>";
-                                }
+                                            <td>$cat_id</td>
+                                            <td>$cat_title</td>
+                                         </tr>";
+                                    }
                                 ?>
-                                <!-- <tr>
-                                    <td>1</td>
-                                    <td>Nature</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Sky</td>
-                                </tr> -->
+                                
                             </tbody>
                         </table>
                     </div>
