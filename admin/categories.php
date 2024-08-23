@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "includes/header.php" ?>
+<?php include "includes/header.php"?>
 
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <?php
-        //  if($connection) echo "conn"
-         ?>
+
         <!-- Sidebar -->
         <?php include "includes/sidebar.php" ?>
         <!-- End of Sidebar -->
@@ -21,18 +19,47 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include "includes/navbar.php" ?>
+                <?php include "includes/navbar.php"?>
                 <!-- End of Topbar -->
-
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Welcome to admin</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Welcome to Categories</h1>
                     </div>
 
-                    
+                    <div class="col-6 col-xs-6">
+                        <form action="">
+                            <div class="form-group">
+                                <label for="cat_title">Category Name</label>
+                                <input type="text" name="cat_title" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="submit" value="Add Category" class="btn-sm btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-6 col-xs-6">
+                        <table class="table table-bordered table-hover table-secondary">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Category Title</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Nature</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Sky</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
             </div>

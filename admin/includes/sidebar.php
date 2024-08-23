@@ -45,7 +45,7 @@
             
 
              <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="categories.php">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Categories</span></a>
             </li>
