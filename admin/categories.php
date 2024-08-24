@@ -31,9 +31,10 @@
 
                     <div class="col-6 col-xs-6">
                         <?php
+                        // Database connection (assuming $connection is defined in includes/db.php)
 
                         // Handle category addition
-                        if (isset($_POST['submit'])) {
+                        if (isset($_POST['add_submit'])) {
                             $cat_title = $_POST['cat_title'];
 
                             if (empty($cat_title)) {
@@ -48,6 +49,30 @@
                                     die('<div class="alert alert-danger">QUERY FAILED: ' . mysqli_error($connection) . '</div>');
                                 } else {
                                     echo "<div class='alert alert-success'>Category added successfully</div>";
+                                    // Redirect to avoid duplicate submissions on page refresh
+                                    header("Location: categories.php");
+                                    exit();
+                                }
+                            }
+                        }
+
+                        // Handle category update
+                        if (isset($_POST['update_submit'])) {
+                            $cat_id = $_POST['cat_id'];
+                            $cat_title = $_POST['cat_title'];
+
+                            if (empty($cat_title)) {
+                                echo "<div class='alert alert-danger'>This field should not be empty</div>";
+                            } else {
+                                $cat_title = mysqli_real_escape_string($connection, $cat_title);
+
+                                $query = "UPDATE categories SET cat_title = '$cat_title' WHERE cat_id = $cat_id";
+                                $update_category_query = mysqli_query($connection, $query);
+
+                                if (!$update_category_query) {
+                                    die('<div class="alert alert-danger">QUERY FAILED: ' . mysqli_error($connection) . '</div>');
+                                } else {
+                                    echo "<div class='alert alert-success'>Category updated successfully</div>";
                                     // Redirect to avoid duplicate submissions on page refresh
                                     header("Location: categories.php");
                                     exit();
@@ -71,16 +96,49 @@
                                 exit();
                             }
                         }
+
+                        // Prepare for edit
+                        $edit_mode = false;
+                        $edit_cat_id = 0;
+                        if (isset($_GET['edit'])) {
+                            $edit_cat_id = $_GET['edit'];
+                            $edit_mode = true;
+                            $query = "SELECT * FROM categories WHERE cat_id = $edit_cat_id";
+                            $select_categories_id = mysqli_query($connection, $query);
+
+                            if ($row = mysqli_fetch_assoc($select_categories_id)) {
+                                $cat_title = htmlspecialchars($row['cat_title']);
+                            } else {
+                                echo "<div class='alert alert-danger'>Category not found</div>";
+                                $edit_mode = false;
+                            }
+                        }
                         ?>
+
+                        <!-- Add Category Form -->
                         <form action="" method="post">
                             <div class="form-group">
                                 <label for="cat_title">Category Name</label>
                                 <input type="text" name="cat_title" id="cat_title" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <input type="submit" name="submit" value="Add Category" class="btn btn-primary btn-sm">
+                                <input type="submit" name="add_submit" value="Add Category" class="btn btn-primary btn-sm">
                             </div>
                         </form>
+
+                        <!-- Update Category Form -->
+                        <?php if ($edit_mode): ?>
+                            <form action="" method="post">
+                                <input type="hidden" name="cat_id" value="<?php echo $edit_cat_id; ?>">
+                                <div class="form-group">
+                                    <label for="cat_title">Update Category Name</label>
+                                    <input value="<?php echo $cat_title; ?>" type="text" name="cat_title" id="cat_title" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="update_submit" value="Update Category" class="btn btn-primary btn-sm">
+                                </div>
+                            </form>
+                        <?php endif; ?>
                     </div>
 
                     <div class="col-6 col-xs-6">
@@ -93,7 +151,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Category Title</th>
-                                    <th>Action</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -105,7 +164,8 @@
                                     echo "<tr>";
                                     echo "<td>$cat_id</td>";
                                     echo "<td>$cat_title</td>";
-                                    echo "<td><a href='categories.php?delete={$cat_id}' class='btn btn-danger'><i class='fas fa-fw fa-trash'></i></a></td>";
+                                    echo "<td><center><a href='categories.php?delete={$cat_id}' class='btn btn-danger'><i class='fas fa-fw fa-trash'></i></a></center></td>";
+                                    echo "<td><center><a href='categories.php?edit={$cat_id}' class='btn btn-success'><i class='fas fa-fw fa-pen'></i></a></center></td>";
                                     echo "</tr>";
                                 }
                                 ?>
