@@ -1,5 +1,8 @@
-<?php ob_start(); ?>
 <?php include "../includes/db.php" ?>
+<?php include "../includes/functions.php"?>
+
+<?php ob_start(); ?>
+
 
 <head>
     <meta charset="utf-8">
