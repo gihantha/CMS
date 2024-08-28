@@ -1,8 +1,17 @@
-<?php 
+<?php
 
+function confirm($result)
+{
+    global $connection;
+    if (!$result) {
+        $connection;
+        die("QUERY FAILED .");
+    }
+    ;
+}
 
-
-function insertCategory(){
+function insertCategory()
+{
     global $connection;
 
     if (isset($_POST['add_submit'])) {
@@ -28,7 +37,8 @@ function insertCategory(){
     }
 }
 
-function updateCategory(){
+function updateCategory()
+{
     global $connection;
 
     if (isset($_POST['update_submit'])) {
@@ -55,7 +65,8 @@ function updateCategory(){
     }
 }
 
-function deleteCategory(){
+function deleteCategory()
+{
     global $connection;
 
     if (isset($_GET['delete'])) {
@@ -75,8 +86,9 @@ function deleteCategory(){
     }
 }
 
-function findAllCategories(){
-    
+function findAllCategories()
+{
+
     global $connection;
 
     $query = "SELECT * FROM categories";
