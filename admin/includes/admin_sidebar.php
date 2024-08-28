@@ -37,7 +37,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Posts:</h6>
                         <a class="collapse-item" href="posts.php">View All Posts</a>
-                        <a class="collapse-item" href="cards.html">Add Posts</a>
+                        <a class="collapse-item" href="posts.php?source=add_post">Add Posts</a>
                     </div>
                 </div>
             </li>

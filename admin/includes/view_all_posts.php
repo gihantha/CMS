@@ -41,9 +41,19 @@
             echo "<td>$post_tags</td>";
             echo "<td>$post_comment_count</td>";
             echo "<td>$post_date</td>";
+            echo "<td><center><a href='posts.php?delete=$post_id' class='btn btn-danger'><i class='fas fa-fw fa-trash'></i></a></center></td>";
+            echo "<td><center><a href='categories.php?edit=' class='btn btn-success'><i class='fas fa-fw fa-pen'></i></a></center></td>";
             echo "</tr>";
         }
         ?>
 
     </tbody>
 </table>
+
+<?php 
+if(isset($_GET['delete'])){
+    $the_post_id = $_GET['delete'];
+    $query =  "DELETE FROM posts WHERE post_id= {$the_post_id}";
+    $delete_query = mysqli_query($connection, $query);
+}
+?>
