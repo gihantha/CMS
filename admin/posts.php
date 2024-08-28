@@ -24,48 +24,69 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Welcome to Posts</h1>
                     </div>
                     <div class="card">
-                    <div class="row">
-                        <div class="col-lg-12 p-4 m-2">
-                            <table class="table table-bordered table-hover">
-                                <thead class="small">
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Author</th>
-                                        <th>Title</th>
-                                        <th>Category</th>
-                                        <th>Status</th>
-                                        <th>Image</th>
-                                        <th>Tags</th>
-                                        <th>Comments</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="small">
-                                        <td>10</td>
-                                        <td>Mike</td>
-                                        <td>Past</td>
-                                        <td>Time</td>
-                                        <td>Status</td>
-                                        <td>Image</td>
-                                        <td>Tags</td>
-                                        <td>Comments</td>
-                                        <td>Date</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="row">
+                            <div class="col-lg-12 p-4 m-2">
+                                <table class="table table-bordered table-hover">
+                                    <thead class="small">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Author</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Status</th>
+                                            <th>Image</th>
+                                            <th>Tags</th>
+                                            <th>Comments</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        global $connection;
+
+                                        $query = "SELECT * FROM posts";
+                                        $select_all_posts = mysqli_query($connection, $query);
+
+                                        while ($row = mysqli_fetch_assoc($select_all_posts)) {
+                                            $post_id = htmlspecialchars($row['post_id']);
+                                            $post_category_id = htmlspecialchars($row['post_category_id']);
+                                            $post_title = htmlspecialchars($row['post_title']);
+                                            $post_author = htmlspecialchars($row['post_author']);
+                                            $post_date = htmlspecialchars($row['post_date']);
+                                            $post_image = htmlspecialchars($row['post_image']);
+                                            $post_content = htmlspecialchars($row['post_content']);
+                                            $post_status = htmlspecialchars($row['post_status']);
+                                            $post_tags = htmlspecialchars($row['post_tags']);
+                                            $post_comment_count = htmlspecialchars($row['post_comment_count']);
+
+                                            echo "<tr class='small'>";
+                                            echo "<td>$post_id</td>";
+                                            echo "<td>$post_author</td>";
+                                            echo "<td>$post_title</td>";
+                                            echo "<td>$post_category_id</td>";
+                                            echo "<td>$post_status</td>";
+                                            echo "<td><img width='100' src='../images/$post_image' alt='image'></td>";
+                                            echo "<td>$post_tags</td>";
+                                            echo "<td>$post_comment_count</td>";
+                                            echo "<td>$post_date</td>";
+                                            echo "</tr>";
+                                        }
+                                        ?>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                    
 
-                    
+
+
                 </div>
 
             </div>
