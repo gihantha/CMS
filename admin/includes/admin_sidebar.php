@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="./index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-unlock"></i>
                 </div>
@@ -30,13 +30,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#posts_dropdown"
                     aria-expanded="true" aria-controls="posts_dropdown">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-archive"></i>
                     <span>Posts</span>
                 </a>
                 <div id="posts_dropdown" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Posts:</h6>
-                        <a class="collapse-item" href="buttons.html">View All Posts</a>
+                        <a class="collapse-item" href="posts.php">View All Posts</a>
                         <a class="collapse-item" href="cards.html">Add Posts</a>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
             
 
              <li class="nav-item">
-                <a class="nav-link" href="categories.php">
+                <a class="nav-link" href="./categories.php">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Categories</span></a>
             </li>
