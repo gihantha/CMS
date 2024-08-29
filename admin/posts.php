@@ -32,32 +32,33 @@
                     <div class="card">
                         <div class="row">
                             <div class="col-lg-12 p-4 m-2">
-                               <?php
-                               if(isset($_GET['source'])){
-                                $source = $_GET['source'];
-                               } else {
-                                $source = '';
-                               }
+                                <?php
+                                if (isset($_GET['source'])) {
+                                    $source = $_GET['source'];
+                                } else {
+                                    $source = '';
+                                }
 
-                               switch($source){
+                                switch ($source) {
                                     case 'add_post';
                                         include "includes/add_post.php";
-                                    break;
-                                    case '100';
-                                    echo "NICE 13";
-                                    break;
+                                        break;
+                                    case 'edit_post';
+                                        include "includes/edit_post.php";
+                                        break;
                                     case '200';
-                                    echo "NICE 20";
-                                    break;
+                                        echo "NICE 20";
+                                        break;
                                     case '300';
-                                    echo "NICE 33";
-                                    break;
+                                        echo "NICE 33";
+                                        break;
                                     default:
-                                    include "includes/view_all_posts.php";
-                                    break;
-                               };
-                               
-                               ?>
+                                        include "includes/view_all_posts.php";
+                                        break;
+                                }
+                                ;
+
+                                ?>
                             </div>
                         </div>
                     </div>
